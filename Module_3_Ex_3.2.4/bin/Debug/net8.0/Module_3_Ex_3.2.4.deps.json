@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Module_3_Ex_3.2.4/1.0.0": {
+        "runtime": {
+          "Module_3_Ex_3.2.4.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Module_3_Ex_3.2.4/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
