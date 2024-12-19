@@ -6,7 +6,7 @@ class MainClass
     {
 
         const string MyName = "Jane";
-        
+
         Console.WriteLine(MyName);
 
         Console.WriteLine("Hello,\n world");
