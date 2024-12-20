@@ -150,7 +150,7 @@ class MainClass
 
         Console.Write("What is your favorite day of week? ");
 
-        var day = (DayOfWeek)int.Parse(Console.ReadLine());
+        var day = checked((DayOfWeek)int.Parse(Console.ReadLine()));
         Console.WriteLine("Your favorite day is {0}", day);
 
         Console.Write("Enter your age: ");
