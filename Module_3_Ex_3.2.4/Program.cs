@@ -847,7 +847,7 @@ class MainClass
         Console.WriteLine("Your Pet's name: {0}", Pet.Item1);
         Console.WriteLine("Your Pet's type: {0}", Pet.Item2);
         Console.WriteLine("Your Pet's age: {0}", Pet.Item3);
-*/
+
         (string Name, string Type, double Age, int NameCount) Pet;
 
         Console.Write("Your Pet's name: ");
@@ -864,6 +864,38 @@ class MainClass
         Console.WriteLine("Your Pet's type: {0}", Pet.Item2);
         Console.WriteLine("Your Pet's age: {0}", Pet.Item3);
         Console.WriteLine("Your Pet's age: {0}", Pet.Item4);
+*/
+
+        (string Name, string LastName, string Login, int LoginLength,
+                bool HasPet, string[] favcolors, double Age) User;
+        for (int k = 0; k < 0; k++)
+        {
+            Console.WriteLine("Enter name");
+            User.Name = Console.ReadLine();
+
+            Console.WriteLine("Enter last name");
+            User.LastName = Console.ReadLine();
+
+            Console.WriteLine("Enter login name");
+            User.Login = Console.ReadLine();
+
+            User.LoginLength = User.Name.Length;
+            Console.WriteLine($"The user name length is {0}", User.LoginLength);
+
+            Console.WriteLine("Do you have pets? yes or No");
+            User.HasPet = Console.ReadLine() == "yes" ? true : false;
+
+            Console.WriteLine("Enter user's age: ");
+            User.Age = Convert.ToDouble(Console.ReadLine());
+
+            User.favcolors = new string[3];
+
+            Console.WriteLine("Enter three favorite colors :");
+            for (int i = 0; i < User.favcolors.Length; i++)
+            {
+                User.favcolors[i] = Console.ReadLine();
+            }
+        }
 
         Console.ReadKey();
     }
