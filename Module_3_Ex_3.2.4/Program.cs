@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Numerics;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class MainClass
@@ -236,7 +238,7 @@ class MainClass
         var b = 7;
 
         var c = a != b ? a + b : b;
-*/
+
         Console.WriteLine("Write your favorite color in English using low cap");
 
         var color = Console.ReadLine();
@@ -263,6 +265,605 @@ class MainClass
 
             Console.WriteLine("Your color is cyan!");
         }
+
+        var color = Console.ReadLine();
+
+        switch (color)
+        {
+            case "red":
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is red!");
+                break;
+
+            case "green":
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is green!");
+                break;
+            case "cyan":
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+
+
+            default:
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+        }
+
+        Console.WriteLine("Loop while");
+        int k = 0;
+
+        while (k < 3)
+        {
+            Console.WriteLine(k);
+
+            Console.WriteLine("Write your favorite color in English using low cap");
+            switch (Console.ReadLine())
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is red!");
+                    break;
+
+                case "green":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is green!");
+                    break;
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+
+
+                default:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+            }
+
+            k++;
+
+        }
+
+        Console.WriteLine("Loop do While");
+        int t = 0;
+
+        do
+        {
+            Console.WriteLine(t);
+            Console.WriteLine("Write your favorite color in English using low cap");
+
+            switch (Console.ReadLine())
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is red!");
+                    break;
+
+                case "green":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is green!");
+                    break;
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("Your color is yellow!");
+                    break;
+            }
+
+            t++;
+        } while (t < 3);
+
+        Console.WriteLine("Loop while");
+        int k = 0;
+
+        while (k < 1)
+        {
+            Console.WriteLine("Write your favorite color in English using low cap");
+            Console.WriteLine(k);
+
+            var text = Console.ReadLine();
+
+            switch (Console.ReadLine())
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is red!");
+                    break;
+
+                case "green":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is green!");
+                    break;
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("Your color is yellow!");
+                    break;
+            }
+
+            k++;
+            if (text == "stop")
+            {
+                Console.WriteLine("Цикл остановлен");
+                break;
+            }
+
+        }
+
+        Console.WriteLine("Loop do while");
+        int t = 0;
+
+        do
+        {
+            Console.WriteLine(t);
+
+            Console.WriteLine("Write your favorite color in English using low cap");
+            switch (Console.ReadLine())
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is red!");
+                    break;
+
+                case "green":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is green!");
+                    break;
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("Your color is yellow!");
+                    break;
+            }
+
+            t++;
+        } while (t < 1);
+
+        Console.WriteLine("Loop while");
+        int k = 0;
+
+        while (k < 1)
+        {
+            Console.WriteLine("Write your favorite color in English using low cap");
+            Console.WriteLine(k);
+
+            var text = Console.ReadLine();
+
+            if (text == "stop")
+            {
+                Console.WriteLine("Цикл остановлен");
+                break;
+            }
+
+            switch (text)
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is red!");
+                    break;
+
+                case "green":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is green!");
+                    break;
+
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+                default:
+                    continue;
+            }
+
+            k++;
+        }
+
+        int sum = 0;
+
+        while (true)
+        {
+            Console.WriteLine("Enter a number");
+            var number = Convert.ToInt32(Console.ReadLine());
+
+            if (number < 0)
+            {
+                continue;
+            }
+            else if (number == 0)
+            {
+                break;
+            }
+
+            // number > 0
+            sum += number;
+        }
+
+        Console.WriteLine("Итоговая сумма: {0}", sum);
+
+
+        //Размерность массива 
+        var arr = new int[] { 1, 2, 3, 4 };
+        var l = arr.Length;
+
+        //Разные виды инициализации массива
+        int[] arr1 = new int[4] { 1, 2, 3, 5 };
+        int[] arr2 = new int[] { 1, 2, 3, 5 };
+        int[] arr3 = new[] { 1, 2, 3, 5 };
+        int[] arr4 = { 1, 2, 3, 5 };
+
+        var numbers = new int[] { 6, 30, 7, 14, 2, 15 };
+        int minValue = 100000,
+        minIndex = -1;
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            if (numbers[i] < minValue)
+            {
+                minValue = numbers[i];
+                minIndex = i;
+            }
+        }
+
+        Console.WriteLine("The minimum array value index is {0}, and value of the element is = {1}", minIndex, numbers[minIndex]);
+
+        Console.ReadKey();
+        Console.WriteLine("Enter your name");
+
+        var name = Console.ReadLine();
+
+        string[] nameOpposite = new string[name.Length];
+
+
+        Console.WriteLine("Ваше имя по буквам: ");
+
+        foreach (var ch in name)
+        {
+            Console.Write(ch + " ");
+        }
+
+        Console.WriteLine("The last letter in your name is : {0}", name[name.Length - 1]);
+
+
+        Console.WriteLine("Enter your name");
+
+        var name = Console.ReadLine();
+         
+        Console.WriteLine("Enter your name: ");
+
+        for (int i = name.Length-1 ;i>=0 ; i--)
+        {
+            Console.Write(name[i] + " ");
+        }
+
+        Console.WriteLine("The last letter in your name is : {0}", name[name.Length - 1]);
+
+        int[,] array = { { 1, 2, 3, 4, 5, 6 }, { 5, 6, 7, 4, 5, 6 } , { 5, 6, 7, 4, 5, 6 } };
+        //Console.WriteLine(array[0, 0]);
+        /*
+        foreach (var item in array)
+        {
+            Console.Write(item + " ");
+        }
+
+        Console.WriteLine(array.Length);
+        Console.WriteLine(array.GetUpperBound(1));
+
+        int[,] array = { { 1, 2, 3 }, { 5, 6, 7 } };
+        Console.Write("Number of rows: ");
+        Console.WriteLine(array.GetUpperBound(0) + 1 + " ");
+
+        Console.Write("Number of columns: ");
+        Console.WriteLine(array.GetUpperBound(1) + 1 + " ");
+
+        int[,] array = { { 1, 2, 3 }, { 5, 6, 7 }, { 8, 9, 10 }, { 11, 12, 13 } };
+
+        for (int i = 0; i < array.GetUpperBound(0) + 1; i++)
+        {
+            for (int k = 0; k < array.GetUpperBound(1) + 1; k++)
+                Console.Write(array[i, k] + " ");
+
+            Console.WriteLine();
+        }
+
+        int[,] array = { { 1, 2, 3 }, { 5, 6, 7 }, { 8, 9, 10 }, { 11, 12, 13 } };
+
+        for (int i = 0; i < array.GetUpperBound(1) + 1; i++)
+        {
+            for (int k = 0; k < array.GetUpperBound(0) + 1; k++)
+                Console.Write(array[k, i] + " ");
+
+            Console.WriteLine();
+        }
+
+
+        var arr = new int[] { 5, 6, 9, 1, 2, 3, 4 };
+        int temp;
+
+
+        for (int i = 0; i <arr.Length ; i++)
+        {
+            for (int j = i + 1; j < arr.Length; j++) { 
+                
+                if (arr[i] > arr[j])
+                {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+
+        }
+
+        foreach (var item in arr)
+        {
+            Console.Write(item);
+        }
+
+        int sum = 0;
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            sum += arr[i];
+        }
+
+        string[] favcolors = new string[3];
+
+        for (int i = 0; i < favcolors.Length; i++)
+        {
+            Console.WriteLine("Enter your favorite color {0}", i + 1);
+            favcolors[i] = Console.ReadLine();
+        }
+
+        foreach (var color in favcolors)
+        {
+            switch (color)
+            {
+                case "red":
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is red!");
+                    break;
+
+                case "green":
+                    Console.BackgroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is green!");
+                    break;
+
+                case "cyan":
+                    Console.BackgroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Black;
+
+                    Console.WriteLine("Your color is cyan!");
+                    break;
+                default:
+                    continue;
+            }
+        }
+
+        int[][] array = new int[3][];
+
+        array[0] = new int[2] { 1, 2 };
+        array[1] = new int[3] { 1, 2, 3 };
+        array[2] = new int[5] { 1, 2, 3, 4, 5 };
+
+        foreach (var num in array)
+        {
+            foreach (var item in num)
+            {
+                Console.Write(item + " ");
+            }
+        }
+
+        var arr = new int[] { 5, 6, 9, 1, 2, 3, 4 };
+        int positiveNumberCount=0;
+
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if ( arr[i] > 0 ) { }
+            {
+                positiveNumberCount++;
+            }
+
+        }
+
+        Console.Write(positiveNumberCount);
+
+        //Давайте модифицируем нашу предыдущую задачу для работы с двумерным массивом. Необходимо найти количество положительных элементов массива.
+        int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
+        int positiveNumberCount = 0;
+
+
+        for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+        {
+            for (int k = 0; k < arr.GetUpperBound(1) + 1; k++)
+
+            if (arr[i, k] > 0) 
+            {
+                positiveNumberCount++;
+            }
+        }
+
+        Console.Write(positiveNumberCount);
+
+        int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
+
+        int positiveNumberCount = 0;
+
+
+        foreach (var item in arr)
+        {
+            if (item > 0)
+            {
+                positiveNumberCount++;
+            }
+        }
+
+        Console.Write(positiveNumberCount);
+
+        int[][] array = new int[3][];
+
+        array[0] = new int[2] { 1, 2 };
+        array[1] = new int[3] { 1, 2, 3 };
+        array[2] = new int[5] { 1, 2, 3, 4, 5 };
+
+
+        foreach (var num in array)
+        {
+            foreach (var item in num)
+            {
+                Console.Write(item + " ");
+            }
+        }
+
+        int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
+
+        foreach (var num in arr)
+        {
+            foreach (var item in num)
+            {
+                Console.Write(item + " ");
+            }
+        }
+
+
+        //Задание 4.3.17
+
+
+        int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
+        int temp;
+
+
+        for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+        {
+            for (int k = 0; k < arr.GetUpperBound(1) + 1; k++)
+            {
+                for (int j = k + 1; j < arr.GetUpperBound(1) + 1; j++)
+                {
+                    if (arr[i,k] > arr[i,j])
+                    {
+                        temp = arr[i, j];
+                        arr[i, j] = arr[i, k];
+                        arr[i, k] = temp;
+                    }
+                }
+            }
+            Console.Write("\n");
+        }
+
+        for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+        {
+            for (int k = 0; k < arr.GetUpperBound(1) + 1; k++)
+                Console.Write(arr[i, k] + " ");
+
+            Console.WriteLine();
+        }
+
+        //Console.Write(positiveNumberCount);
+        //var anketa = (name: "Jane", age: 27);
+        var (name, age) = ("Alexander", 27);
+        Console.WriteLine("Your name: {0}", name);
+        Console.WriteLine("Your age: {0}", age);
+
+        Console.Write("Enter your name: ");
+        name = Console.ReadLine();
+        Console.Write("Enter your age:");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your name: {0}", name);
+        Console.WriteLine("Your age: {0}", age);
+
+        (string Name, string Type, double Age) Pet;
+
+        Console.Write("Your Pet's name: ");
+        Pet.Name = Console.ReadLine();
+
+        Console.Write("Your Pet's type: ");
+        Pet.Type = Console.ReadLine();
+
+        Console.Write("Your Pet's age: ");
+        Pet.Age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your Pet's name: {0}", Pet.Item1);
+        Console.WriteLine("Your Pet's type: {0}", Pet.Item2);
+        Console.WriteLine("Your Pet's age: {0}", Pet.Item3);
+*/
+        (string Name, string Type, double Age, int NameCount) Pet;
+
+        Console.Write("Your Pet's name: ");
+        Pet.Name = Console.ReadLine();
+        Pet.NameCount = Pet.Name.Length;
+
+        Console.Write("Your Pet's type: ");
+        Pet.Type = Console.ReadLine();
+
+        Console.Write("Your Pet's age: ");
+        Pet.Age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your Pet's name: {0}", Pet.Item1);
+        Console.WriteLine("Your Pet's type: {0}", Pet.Item2);
+        Console.WriteLine("Your Pet's age: {0}", Pet.Item3);
+        Console.WriteLine("Your Pet's age: {0}", Pet.Item4);
 
         Console.ReadKey();
     }
