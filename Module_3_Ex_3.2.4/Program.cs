@@ -864,7 +864,6 @@ class MainClass
         Console.WriteLine("Your Pet's type: {0}", Pet.Item2);
         Console.WriteLine("Your Pet's age: {0}", Pet.Item3);
         Console.WriteLine("Your Pet's age: {0}", Pet.Item4);
-*/
 
         (string Name, string LastName, string Login, int LoginLength,
                 bool HasPet, string[] favcolors, double Age) User;
@@ -896,6 +895,7 @@ class MainClass
                 User.favcolors[i] = Console.ReadLine();
             }
         }
+*/
 
         Console.ReadKey();
     }
