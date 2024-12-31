@@ -1118,52 +1118,48 @@ class MainClass
 
         return result;
     }
-    static int[] SortArrayAsc(in int [] result, out int [] sortedasc)
+    static int[] SortArrayAsc(int [] result)
     {
         int temp;
-        sortedasc = result;
 
-        for (int i = 0; i < sortedasc.Length; i++)
+        for (int i = 0; i < result.Length; i++)
         {
-            for (int j = i + 1; j < sortedasc.Length; j++)
+            for (int j = i + 1; j < result.Length; j++)
             {
-                if (sortedasc[i] > sortedasc[j])
+                if (result[i] > result[j])
                 {
-                    temp = sortedasc[i];
-                    sortedasc[i] = sortedasc[j];
-                    sortedasc[j] = temp;
-
+                    temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
                 }
             }
         }
 
         return result;
     }
-    static int [] SortArrayDesc(in int[] result, out int[] sorteddesc)
+    static int [] SortArrayDesc(int[] result)
     {
         int temp;
-        sorteddesc = result;
 
-        for (int i = 0; i < sorteddesc.Length; i++)
+        for (int i = 0; i < result.Length; i++)
         {
-            for (int j = i + 1; j < sorteddesc.Length; j++)
+            for (int j = i + 1; j < result.Length; j++)
             {
-                if (sorteddesc[i] < sorteddesc[j])
+                if (result[i] < result[j])
                 {
-                    temp = sorteddesc[i];
-                    sorteddesc[i] = sorteddesc[j];
-                    sorteddesc[j] = temp;
-
+                    temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
                 }
             }
         }
 
-        return sorteddesc;
+        return result;
     }
-    static void SortArray(in int[] result, out int[] sorteddesc, out int[] sortedasc)
+    static void SortArray(in int[] array, out int[] sorteddesc, out int[] sortedasc)
     {
-        SortArrayDesc(in result, out sorteddesc);
-        SortArrayAsc(in result, out sortedasc);
+        sorteddesc = SortArrayDesc(array);
+        sortedasc = SortArrayAsc(array);
     }
 
     static string GetDataFromConsole() => Console.ReadLine();
