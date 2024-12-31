@@ -786,14 +786,50 @@ class MainClass
             }
         }
 
-
         //Задание 4.3.17
 
 
         int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
         int temp;
 
+        for (int y = 0; y < arr.GetUpperBound(0)+1; y++)
+        {
+            for (int k = 0; k < arr.GetUpperBound(1)+1; k++)
+            {
+                for(int x = k+1; x< arr.GetUpperBound(1) + 1; x++)
+                {
+                    if (arr[y, k] > arr[y, x])
+                    {
+                        temp = arr[y, x ];
+                        arr[y, x] = arr[y, k];
+                        arr[y, k] = temp;
+                    }
+                }     
+            }
+        }
 
+
+        for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+        {
+            for (int k = 0; k < arr.GetUpperBound(1) + 1; k++)
+                Console.Write(arr[i, k] + " ");
+
+            Console.WriteLine();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
         {
             for (int k = 0; k < arr.GetUpperBound(1) + 1; k++)
@@ -895,9 +931,325 @@ class MainClass
                 User.favcolors[i] = Console.ReadLine();
             }
         }
+
+        (string Name, string[] Dishes) User;
+        Console.WriteLine("\nEnter user name: ");
+        User.Name = Console.ReadLine();
+
+        Console.WriteLine("\nEnter your 5 favorite dishes : ");
+        User.Dishes = new string[5];
+        for (int i = 0; i < User.Dishes.Length; i++)
+        {
+            Console.WriteLine($"Enter your dish favorite name: {i + 1} ");
+            User.Dishes[i] = Console.ReadLine();
+        }
+
+        var (name, age) = ("Alexander", 27);
+
+        Console.WriteLine("My name: {0}", name);
+        Console.WriteLine("My age: {0}", age);
+
+        Console.Write("Enter your name: ");
+        name = Console.ReadLine();
+        Console.Write("Enter your age using number:");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your name: {0}", name);
+        Console.WriteLine("Your age: {0}", age);
+
+
+        string [] favorcolors = new string[3];
+
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            favorcolors[i] = ShowColor();
+        }
+
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            Console.WriteLine($"You entered favorite color : {i+1} " + favorcolors[i]);
+        }
+
+        int[] arrayFromConsole = new int[5];
+        arrayFromConsole = GetArrayFromConsole();
+        arrayFromConsole = sortArray(arrayFromConsole);
+        for (int i = 0; i < arrayFromConsole.Length; i++)
+        {
+            Console.WriteLine(arrayFromConsole[i]);
+        }
+       
+        //(string name, int age) anketa;
+
+        var (name, age) = ("Alexander", 27);
+
+        Console.Write("Enter your name: ");
+        name = Console.ReadLine();
+        Console.Write("Enter your age:");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your name: {0}", name);
+        Console.WriteLine("Your age: {0}", age);
+
+        //Задание 5.2.8
+
+        string[] favorcolors = new string[3];
+
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            favorcolors[i] = ShowColor(name, age);
+        }
+
+        ShowColors(favcolor: favorcolors);
+        /*
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            favorcolors[i] = ShowColor(name, age);
+        }
+        
+
+        //Задание 5.2.15
+        var array = GetArrayFromConsole();
+        var sortedarray = SortArray(array);
+
+        //Задание 5.2.16
+        var array1 = GetArrayFromConsole(3);
+        var sortedarray1 = SortArray(array);
+
+        //Задание 5.2.17
+        var array2 = GetArrayFromConsole(10);
+        ShowArray(array2, true);
+        //Module 5.3
+        var someName = "Alexander";
+        Console.WriteLine(someName);
+
+        ChangeName(ref someName);
+        Console.WriteLine(someName);
+        
+        var myAge = 45;
+        Console.WriteLine(myAge);
+
+        ChangeAge(myAge);
+        Console.WriteLine(myAge);
+
+
+        var arr = new int[] { 1, 2, 3 };
+        int data = 5;
+        BigDataOperation(arr, ref data);
+
+        Console.WriteLine(arr[0]);
 */
+        //Задание 5.3.8
+        var someName = "Alexander";
+        var oldNameTest = "oldName";
+        Console.WriteLine(someName);
+        Console.WriteLine(oldNameTest);
+        GetName(out someName,out oldNameTest);
+        Console.WriteLine(someName);
+        Console.WriteLine(oldNameTest);
+
+
 
         Console.ReadKey();
+    }
+    static void BigDataOperation(in int[] arr, ref int data)
+    {
+        data = 4;
+        arr[0] = 4;
+    }
+    static void ChangeName(ref string name)
+    {
+        Console.WriteLine("Enter name");
+        name = Console.ReadLine();
+    }
+    static void ChangeAge(int age)
+    {
+        Console.WriteLine("Enter new age");
+        age = Convert.ToInt32(Console.ReadLine());
+    }
+    static void GetName(out string name, out string oldName)
+    {
+        oldName = "Alexander old name";
+        Console.WriteLine("Enter name");
+        name = Console.ReadLine();
+    }
+
+    static void GetAge(out string Name, out byte Age)
+    {
+        Name = "";
+        Age = 0;
+    }
+    /*
+    static int SumNumbers(ref int num1, in int num2, out int num3, int num4 )
+    {
+        num1 = 5;
+        result = num1 + num2;
+        num3 = num3 * result;
+        return result;
+    }
+    
+
+    static void ShowArray(int[] array, bool IsSort= false)
+    {
+        var temp = array;
+
+        if(IsSort)
+        {
+            var sortedarray2 = SortArray(array);
+        }
+        
+        foreach( var item in temp)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    */
+
+    //Задание 5.2.14
+    //Задание 5.2.14
+    static int[] GetArrayFromConsole(ref int num )
+    {
+        var result = new int[num];
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine("Enter array element {0}", i + 1);
+            result[i] = int.Parse(Console.ReadLine());
+        }
+
+        return result;
+    }
+    static int[] SortArrayAsc(in int [] result, out int [] sortedasc)
+    {
+        int temp;
+        sortedasc = result;
+
+        for (int i = 0; i < sortedasc.Length; i++)
+        {
+            for (int j = i + 1; j < sortedasc.Length; j++)
+            {
+                if (sortedasc[i] > sortedasc[j])
+                {
+                    temp = sortedasc[i];
+                    sortedasc[i] = sortedasc[j];
+                    sortedasc[j] = temp;
+
+                }
+            }
+        }
+
+        return result;
+    }
+    static int [] SortArrayDesc(in int[] result, out int[] sorteddesc)
+    {
+        int temp;
+        sorteddesc = result;
+
+        for (int i = 0; i < sorteddesc.Length; i++)
+        {
+            for (int j = i + 1; j < sorteddesc.Length; j++)
+            {
+                if (sorteddesc[i] < sorteddesc[j])
+                {
+                    temp = sorteddesc[i];
+                    sorteddesc[i] = sorteddesc[j];
+                    sorteddesc[j] = temp;
+
+                }
+            }
+        }
+
+        return sorteddesc;
+    }
+    static void SortArray(in int[] result, out int[] sorteddesc, out int[] sortedasc)
+    {
+        SortArrayDesc(in result, out sorteddesc);
+        SortArrayAsc(in result, out sortedasc);
+    }
+
+    static string GetDataFromConsole() => Console.ReadLine();
+
+    static string ShowColor(string userName, int userAge)
+    {
+        Console.WriteLine("{0}, {1} years old \nEnter your your favorite color using low caps ", userName, userAge);
+        var color = Console.ReadLine();
+
+        switch (color)
+        {
+            case "red":
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is red!");
+                break;
+
+            case "green":
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is green!");
+                break;
+            case "cyan":
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+            default:
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Your color is yellow!");
+                break;
+        }
+
+        return color;
+    }
+    
+    static void ShowColors(string userName = "Jane", params string[] favcolor)
+    {
+        Console.WriteLine("{0} ,Your favorite colors",userName);
+
+        foreach (var fav in favcolor)
+        {
+            Console.WriteLine($"{fav}");
+        }
+
+    }
+    static string ShowColor(string[] favcolors)
+    {
+        //Console.WriteLine("{0}, {1} years old \nEnter your your favorite color using low caps ", userName, userAge);
+        var color = Console.ReadLine();
+
+        switch (color)
+        {
+            case "red":
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is red!");
+                break;
+
+            case "green":
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is green!");
+                break;
+            case "cyan":
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+            default:
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Your color is yellow!");
+                break;
+        }
+
+        return color;
     }
 }
 
