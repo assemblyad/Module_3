@@ -1037,7 +1037,7 @@ class MainClass
         BigDataOperation(arr, ref data);
 
         Console.WriteLine(arr[0]);
-*/
+
         //Задание 5.3.8
         var someName = "Alexander";
         var oldNameTest = "oldName";
@@ -1046,11 +1046,48 @@ class MainClass
         GetName(out someName,out oldNameTest);
         Console.WriteLine(someName);
         Console.WriteLine(oldNameTest);
+*/
+        Console.WriteLine("Write something: ");
 
+        var str = Console.ReadLine();
+
+        Console.WriteLine("Specify eco deep");
+
+        var deep = int.Parse(Console.ReadLine());
+
+        Echo(str, deep);
 
 
         Console.ReadKey();
     }
+
+    static void Echo(string saidWorld, int deep)
+    {
+        var modif = saidWorld;
+        if (modif.Length>2) 
+        {
+            modif = modif.Remove(0,2);
+        }
+
+        Console.WriteLine("..." + modif);
+
+        if (deep > 1)
+        {
+            Echo(modif, deep - 1);
+        }
+    }
+
+    /*
+    static void Echo(string phrase, int deep)
+    {
+        Console.WriteLine(phrase);
+
+        if (deep > 1)
+        {
+            Echo(phrase, deep - 1);
+        }
+    }
+    */
     static void BigDataOperation(in int[] arr, ref int data)
     {
         data = 4;
