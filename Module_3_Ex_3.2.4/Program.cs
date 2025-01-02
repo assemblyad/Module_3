@@ -29,7 +29,6 @@ class MainClass
             Console.WriteLine("\nYou have {0} pets", user.Pet.Length);
             for (int i = 0; i < user.Pet.Length; i++)
             {
-                //Console.WriteLine($"\nYour pet name number {i+1} is {user.Pet[i]}:");
                 Console.WriteLine($"Your pet name number {0} is {1}:",i+1, user.Pet[i]);
             }
         }
@@ -39,7 +38,7 @@ class MainClass
             Console.WriteLine("\nPou have {0} favorite colors", user.Favcolor.Length);
             for (int i = 0; i < user.Pet.Length; i++)
             {
-                Console.WriteLine($"\nYour favorite color number  {i + 1} is {user.Favcolor[i]}:");
+                Console.WriteLine($"Your favorite color number  {i + 1} is {user.Favcolor[i]}:");
             }
         }
     }
