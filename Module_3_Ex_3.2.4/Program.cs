@@ -1045,7 +1045,7 @@ class MainClass
         GetName(out someName,out oldNameTest);
         Console.WriteLine(someName);
         Console.WriteLine(oldNameTest);
-*/
+
         Console.WriteLine("Write something: ");
 
         var str = Console.ReadLine();
@@ -1055,11 +1055,34 @@ class MainClass
         var deep = int.Parse(Console.ReadLine());
 
         Echo(str, deep);
+*/
+        Console.WriteLine("Enter desired factorial: ");
+        int factorial = int.Parse(Console.ReadLine());
 
+        decimal reuslt = Factorial(factorial);
+
+        Console.WriteLine("Factorial of entered number {0} eqaul to the {1} ", factorial, reuslt);
 
         Console.ReadKey();
     }
-
+    public static int PowerUp(int N, byte pow)
+    {
+        if (pow == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            if (pow == 1)
+            {
+                return N;
+            }
+            else
+            {
+                return N * PowerUp(N, --pow);
+            }
+        }
+    }
     static void Echo(string saidWorld, int deep)
     {
         var modif = saidWorld;
@@ -1076,7 +1099,17 @@ class MainClass
             Echo(modif, deep - 1);
         }
     }
-
+    static decimal Factorial(int x)
+    {
+        if (x == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return x * Factorial(x - 1);
+        }
+    }
     /*
     static void Echo(string phrase, int deep)
     {
