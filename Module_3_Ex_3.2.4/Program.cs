@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -1055,7 +1056,7 @@ class MainClass
         var deep = int.Parse(Console.ReadLine());
 
         Echo(str, deep);
-*/
+
         Console.WriteLine("Enter desired factorial: ");
         int factorial = int.Parse(Console.ReadLine());
 
@@ -1063,7 +1064,77 @@ class MainClass
 
         Console.WriteLine("Factorial of entered number {0} eqaul to the {1} ", factorial, reuslt);
 
+        var num = 1;
+
+        AddTen(ref num);
+
+        Console.WriteLine(num);
+
+        int num1 = 100;
+        int numNum = num;
+
+
+        object obj = 200;
+        object newobj = obj;
+*/
+        Animal animal = new Animal { type = "dog", name = "Volt", age = "4" };
+
         Console.ReadKey();
+    }
+    class Rectabgle
+    {
+        public int a;
+        public int b;
+        Rectabgle()
+        {
+            a = 6;
+            b= 4;
+        }
+
+        Rectabgle(int first, int second)
+        {
+            a = first;
+            b = second;
+        }
+        Rectabgle(int side)
+        {
+            a = side;
+            b = side;
+        }
+
+        public int Square() { return a * b; }
+
+    }
+    struct Animal
+    {
+        public string type;
+        public string name;
+        public string age;
+
+        public void Info()
+        {
+            Console.WriteLine("It is {0} with nick name {1}, he is {2}", type, name, age);
+        }
+    }
+    class Pen
+    {
+        public string color;
+        public int cost;
+
+        Pen()
+        {
+            color = "black";
+            cost = 100;
+        }
+        Pen(string penColor, int penCcost)
+        {
+            color = penColor;
+            cost = penCcost;
+        }
+    }
+    static void AddTen(ref int num)
+    {
+        num = num + 10;
     }
     public static int PowerUp(int N, byte pow)
     {
