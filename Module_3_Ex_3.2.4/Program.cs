@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -45,7 +47,6 @@ class MainClass
         SemaphoreColor = Semaphore.Green;
 
         Console.WriteLine(SemaphoreColor);
-
 
         string MyName1 = "Alexander";
         Console.WriteLine("Hello, world");
@@ -786,14 +787,50 @@ class MainClass
             }
         }
 
-
         //Задание 4.3.17
 
 
         int[,] arr = { { -5, 6, 9, 1, 2, -3 }, { -8, 8, 1, 1, 2, -3 } };
         int temp;
 
+        for (int y = 0; y < arr.GetUpperBound(0)+1; y++)
+        {
+            for (int k = 0; k < arr.GetUpperBound(1)+1; k++)
+            {
+                for(int x = k+1; x< arr.GetUpperBound(1) + 1; x++)
+                {
+                    if (arr[y, k] > arr[y, x])
+                    {
+                        temp = arr[y, x ];
+                        arr[y, x] = arr[y, k];
+                        arr[y, k] = temp;
+                    }
+                }     
+            }
+        }
 
+
+        for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
+        {
+            for (int k = 0; k < arr.GetUpperBound(1) + 1; k++)
+                Console.Write(arr[i, k] + " ");
+
+            Console.WriteLine();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         for (int i = 0; i < arr.GetUpperBound(0) + 1; i++)
         {
             for (int k = 0; k < arr.GetUpperBound(1) + 1; k++)
@@ -895,9 +932,745 @@ class MainClass
                 User.favcolors[i] = Console.ReadLine();
             }
         }
-*/
 
+        (string Name, string[] Dishes) User;
+        Console.WriteLine("\nEnter user name: ");
+        User.Name = Console.ReadLine();
+
+        Console.WriteLine("\nEnter your 5 favorite dishes : ");
+        User.Dishes = new string[5];
+        for (int i = 0; i < User.Dishes.Length; i++)
+        {
+            Console.WriteLine($"Enter your dish favorite name: {i + 1} ");
+            User.Dishes[i] = Console.ReadLine();
+        }
+
+        var (name, age) = ("Alexander", 27);
+
+        Console.WriteLine("My name: {0}", name);
+        Console.WriteLine("My age: {0}", age);
+
+        Console.Write("Enter your name: ");
+        name = Console.ReadLine();
+        Console.Write("Enter your age using number:");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your name: {0}", name);
+        Console.WriteLine("Your age: {0}", age);
+
+
+        string [] favorcolors = new string[3];
+
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            favorcolors[i] = ShowColor();
+        }
+
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            Console.WriteLine($"You entered favorite color : {i+1} " + favorcolors[i]);
+        }
+
+        int[] arrayFromConsole = new int[5];
+        arrayFromConsole = GetArrayFromConsole();
+        arrayFromConsole = sortArray(arrayFromConsole);
+        for (int i = 0; i < arrayFromConsole.Length; i++)
+        {
+            Console.WriteLine(arrayFromConsole[i]);
+        }
+       
+        //(string name, int age) anketa;
+
+        var (name, age) = ("Alexander", 27);
+
+        Console.Write("Enter your name: ");
+        name = Console.ReadLine();
+        Console.Write("Enter your age:");
+        age = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Your name: {0}", name);
+        Console.WriteLine("Your age: {0}", age);
+
+        //Задание 5.2.8
+
+        string[] favorcolors = new string[3];
+
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            favorcolors[i] = ShowColor(name, age);
+        }
+
+        ShowColors(favcolor: favorcolors);
+        /*
+        for (int i = 0; i < favorcolors.Length; i++)
+        {
+            favorcolors[i] = ShowColor(name, age);
+        }
+        
+
+        //Задание 5.2.15
+        var array = GetArrayFromConsole();
+        var sortedarray = SortArray(array);
+
+        //Задание 5.2.16
+        var array1 = GetArrayFromConsole(3);
+        var sortedarray1 = SortArray(array);
+
+        //Задание 5.2.17
+        var array2 = GetArrayFromConsole(10);
+        ShowArray(array2, true);
+        //Module 5.3
+        var someName = "Alexander";
+        Console.WriteLine(someName);
+
+        ChangeName(ref someName);
+        Console.WriteLine(someName);
+        
+        var myAge = 45;
+        Console.WriteLine(myAge);
+
+        ChangeAge(myAge);
+        Console.WriteLine(myAge);
+
+
+        var arr = new int[] { 1, 2, 3 };
+        int data = 5;
+        BigDataOperation(arr, ref data);
+
+        Console.WriteLine(arr[0]);
+
+        //Задание 5.3.8
+        var someName = "Alexander";
+        var oldNameTest = "oldName";
+        Console.WriteLine(someName);
+        Console.WriteLine(oldNameTest);
+        GetName(out someName,out oldNameTest);
+        Console.WriteLine(someName);
+        Console.WriteLine(oldNameTest);
+
+        Console.WriteLine("Write something: ");
+
+        var str = Console.ReadLine();
+
+        Console.WriteLine("Specify eco deep");
+
+        var deep = int.Parse(Console.ReadLine());
+
+        Echo(str, deep);
+
+        Console.WriteLine("Enter desired factorial: ");
+        int factorial = int.Parse(Console.ReadLine());
+
+        decimal reuslt = Factorial(factorial);
+
+        Console.WriteLine("Factorial of entered number {0} eqaul to the {1} ", factorial, reuslt);
+
+        var num = 1;
+
+        AddTen(ref num);
+
+        Console.WriteLine(num);
+
+        int num1 = 100;
+        int numNum = num;
+
+
+        object obj = 200;
+        object newobj = obj;
+
+        Animal animal = new Animal { type = "dog", name = "Volt", age = "4" };
+
+        Data data = new Data { Name = "Record", Lenght = 10, Version = 1, Array = new int[] {15,20 } };
+        Obj obj = new Obj { Name = "Table", IsAlive = false, Weight = 15 };
+
+        var dataCopy = data;
+        var objCopy = obj;
+
+
+        data.Name = "Value";
+        data.Version = 2;
+        data.Array[0] = 0;
+
+        obj.Name = "Cat";
+        obj.IsAlive = true;
+        obj.Weight = 3;
+
+        objCopy = new Obj { Name =objCopy.Name, IsAlive = obj.IsAlive, Weight = obj.Weight };
+
+        obj.Name = "Table";
+        obj.IsAlive = false;
+        obj.Weight = 15;
+
+        var department = GetCurrentDepartment();
+*/
+        User user = new User();
+
+        // private Setter
+        //user.Age = 10;
+
+        // Getter
+        Console.WriteLine(user.Age);
         Console.ReadKey();
+    }
+    class User
+    {
+        private int age;
+        private string loginName;
+        private string emailAddress;
+        private DateTime lastSeen;
+        public int Age
+        {
+            get
+            {
+                return age;
+            }
+
+            private set
+            {
+                if (value < 18)
+                {
+                    Console.WriteLine("The entered age cannot be less than 18");
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+        }
+        public string LoginName
+        {
+            get
+            {
+                return loginName;
+            }
+        }
+        public string EmailAddress
+        {
+            get
+            {
+                return emailAddress;
+            }
+            set
+            {
+                if (!value.Contains("@"))
+                {
+                    Console.WriteLine("The enter valid e mail address");
+                }
+                else
+                {
+                    emailAddress = value;
+                }
+            }
+        }
+        public DateTime LastSeen
+        {
+            set
+            {
+                lastSeen = value;
+            }
+        }
+    }
+
+    class TrafficLight
+    {
+        private string Color;
+        private void ChangeColor(string color)
+        {
+
+        }
+        public string GetColor()
+        {
+            return Color;
+        }
+    }
+
+    enum TurnDirection
+    {
+        None = 0,
+        Left,
+        Right
+    }
+
+    class Car
+    {
+        private double Fuel;
+
+        private int Mileage;
+
+        private string color;
+
+        private TurnDirection turn;
+
+        public Car()
+        {
+            Fuel = 50;
+            Mileage = 0;
+            color = "White";
+        }
+
+        private void Move()
+        {
+            // Move a kilometer
+            Mileage++;
+            Fuel -= 0.5;
+        }
+
+        private void Turn(TurnDirection direction)
+        {
+            turn = direction;
+        }
+
+        public void FillTheCar()
+        {
+            Fuel = 50;
+        }
+
+        public string GetColor()
+        {
+            return color;
+        }
+
+        public void ChangeColor(string newColor)
+        {
+            if (color != newColor)
+                color = newColor;
+        }
+
+        public bool IsTurningLeft()
+        {
+            return turn == TurnDirection.Left;
+        }
+
+        public bool IsTurningRight()
+        {
+            return turn == TurnDirection.Right;
+        }
+    }
+    static Department GetCurrentDepartment()
+    {
+
+        Department department = new Department();
+
+        string message = department?.Company?.Name == "Bank" && department?.City?.Name == "Peter" ? "The bank has branch at Peter" : "No branch found at that city";
+        /*
+            if (department?.Company?.Type == "Банк" && department?.City?.Name == "Санкт-Петербург")
+            {
+	            Console.WriteLine("У банка {0} есть отделение в Санкт-Петербурге", department?.Company?.Name ?? "Неизвестная компания");
+            }
+        */          
+
+        return department;
+        // logic
+    }
+
+    class Triangle
+    {
+        public int sideA;
+
+        public int sideB;
+
+        public int sideC;
+
+
+        public void Square()
+        {
+            // Move a kilometer
+        }
+
+        public void Perimiter()
+        {
+
+        }
+    }
+    class Circle
+    {
+        public double radius;
+
+        public double? lenght;
+
+        public Circle()
+        {
+            radius = 0;
+            lenght = 0;
+        }
+        public void Square()
+        {
+            // Move a kilometer
+        }
+
+        public void Perimiter()
+        {
+
+        }
+    }
+    class Square
+    {
+        public int sideA;
+
+        public void Square1()
+        {
+            // Move a kilometer
+        }
+        public void Perimiter()
+        {
+
+        }
+    }
+    class Bus
+    {
+        public int? Load;
+
+        public void PrintStatus()
+        {
+            if (Load.HasValue && Load > 0)
+            {
+                Console.WriteLine("В авбтобусе {0} пассажиров", Load.Value);
+            }
+            else
+            {
+                Console.WriteLine("Автобус пуст!");
+            }
+        }
+    }
+    class Company
+    {
+        public string Type;
+        public string Name;
+    }
+    class Department
+    {
+        public Company Company;
+        public City City;
+    }
+    class City
+    {
+        public string Name;
+    }
+
+
+
+    struct Data
+    {
+        public string Name;
+        public int Lenght;
+        public int Version;
+        public int[] Array;
+    }
+    class Obj
+    {
+        public string Name;
+        public bool IsAlive;
+        public int Weight;
+    }
+
+
+
+    class Rectabgle
+    {
+        public int a;
+        public int b;
+        Rectabgle()
+        {
+            a = 6;
+            b= 4;
+        }
+
+        Rectabgle(int first, int second)
+        {
+            a = first;
+            b = second;
+        }
+        Rectabgle(int side)
+        {
+            a = side;
+            b = side;
+        }
+
+        public int Square() { return a * b; }
+
+    }
+    struct Animal
+    {
+        public string type;
+        public string name;
+        public string age;
+
+        public void Info()
+        {
+            Console.WriteLine("It is {0} with nick name {1}, he is {2}", type, name, age);
+        }
+    }
+    class Pen
+    {
+        public string color;
+        public int cost;
+
+        Pen()
+        {
+            color = "black";
+            cost = 100;
+        }
+        Pen(string penColor, int penCcost)
+        {
+            color = penColor;
+            cost = penCcost;
+        }
+    }
+    static void AddTen(ref int num)
+    {
+        num = num + 10;
+    }
+    public static int PowerUp(int N, byte pow)
+    {
+        if (pow == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            if (pow == 1)
+            {
+                return N;
+            }
+            else
+            {
+                return N * PowerUp(N, --pow);
+            }
+        }
+    }
+    static void Echo(string saidWorld, int deep)
+    {
+        var modif = saidWorld;
+        if (modif.Length>2) 
+        {
+            modif = modif.Remove(0,2);
+        }
+
+        Console.BackgroundColor = (ConsoleColor)deep;
+        Console.WriteLine("..." + modif);
+
+        if (deep > 1)
+        {
+            Echo(modif, deep - 1);
+        }
+    }
+    static decimal Factorial(int x)
+    {
+        if (x == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return x * Factorial(x - 1);
+        }
+    }
+    /*
+    static void Echo(string phrase, int deep)
+    {
+        Console.WriteLine(phrase);
+
+        if (deep > 1)
+        {
+            Echo(phrase, deep - 1);
+        }
+    }
+    */
+        static void BigDataOperation(in int[] arr, ref int data)
+    {
+        data = 4;
+        arr[0] = 4;
+    }
+    static void ChangeName(ref string name)
+    {
+        Console.WriteLine("Enter name");
+        name = Console.ReadLine();
+    }
+    static void ChangeAge(int age)
+    {
+        Console.WriteLine("Enter new age");
+        age = Convert.ToInt32(Console.ReadLine());
+    }
+    static void GetName(out string name, out string oldName)
+    {
+        oldName = "Alexander old name";
+        Console.WriteLine("Enter name");
+        name = Console.ReadLine();
+    }
+
+    static void GetAge(out string Name, out byte Age)
+    {
+        Name = "";
+        Age = 0;
+    }
+    /*
+    static int SumNumbers(ref int num1, in int num2, out int num3, int num4 )
+    {
+        num1 = 5;
+        result = num1 + num2;
+        num3 = num3 * result;
+        return result;
+    }
+    
+
+    static void ShowArray(int[] array, bool IsSort= false)
+    {
+        var temp = array;
+
+        if(IsSort)
+        {
+            var sortedarray2 = SortArray(array);
+        }
+        
+        foreach( var item in temp)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    */
+
+    //Задание 5.2.14
+    //Задание 5.2.14
+    static int[] GetArrayFromConsole(ref int num )
+    {
+        var result = new int[num];
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            Console.WriteLine("Enter array element {0}", i + 1);
+            result[i] = int.Parse(Console.ReadLine());
+        }
+
+        return result;
+    }
+    static int[] SortArrayAsc(int [] result)
+    {
+        int temp;
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            for (int j = i + 1; j < result.Length; j++)
+            {
+                if (result[i] > result[j])
+                {
+                    temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
+                }
+            }
+        }
+
+        return result;
+    }
+    static int [] SortArrayDesc(int[] result)
+    {
+        int temp;
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            for (int j = i + 1; j < result.Length; j++)
+            {
+                if (result[i] < result[j])
+                {
+                    temp = result[i];
+                    result[i] = result[j];
+                    result[j] = temp;
+                }
+            }
+        }
+
+        return result;
+    }
+    static void SortArray(in int[] array, out int[] sorteddesc, out int[] sortedasc)
+    {
+        sorteddesc = SortArrayDesc(array);
+        sortedasc = SortArrayAsc(array);
+    }
+
+    static string GetDataFromConsole() => Console.ReadLine();
+
+    static string ShowColor(string userName, int userAge)
+    {
+        Console.WriteLine("{0}, {1} years old \nEnter your your favorite color using low caps ", userName, userAge);
+        var color = Console.ReadLine();
+
+        switch (color)
+        {
+            case "red":
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is red!");
+                break;
+
+            case "green":
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is green!");
+                break;
+            case "cyan":
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+            default:
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Your color is yellow!");
+                break;
+        }
+
+        return color;
+    }
+    
+    static void ShowColors(string userName = "Jane", params string[] favcolor)
+    {
+        Console.WriteLine("{0} ,Your favorite colors",userName);
+
+        foreach (var fav in favcolor)
+        {
+            Console.WriteLine($"{fav}");
+        }
+
+    }
+    static string ShowColor(string[] favcolors)
+    {
+        //Console.WriteLine("{0}, {1} years old \nEnter your your favorite color using low caps ", userName, userAge);
+        var color = Console.ReadLine();
+
+        switch (color)
+        {
+            case "red":
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is red!");
+                break;
+
+            case "green":
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is green!");
+                break;
+            case "cyan":
+                Console.BackgroundColor = ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.WriteLine("Your color is cyan!");
+                break;
+            default:
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("Your color is yellow!");
+                break;
+        }
+
+        return color;
     }
 }
 
