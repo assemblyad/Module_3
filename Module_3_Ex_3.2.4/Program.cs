@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
@@ -1099,11 +1100,151 @@ class MainClass
         obj.Name = "Table";
         obj.IsAlive = false;
         obj.Weight = 15;
-*/
 
         var department = GetCurrentDepartment();
+*/
+        User user = new User();
 
+        // private Setter
+        //user.Age = 10;
+
+        // Getter
+        Console.WriteLine(user.Age);
         Console.ReadKey();
+    }
+    class User
+    {
+        private int age;
+        private string loginName;
+        private string emailAddress;
+        private DateTime lastSeen;
+        public int Age
+        {
+            get
+            {
+                return age;
+            }
+
+            private set
+            {
+                if (value < 18)
+                {
+                    Console.WriteLine("The entered age cannot be less than 18");
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+        }
+        public string LoginName
+        {
+            get
+            {
+                return loginName;
+            }
+        }
+        public string EmailAddress
+        {
+            get
+            {
+                return emailAddress;
+            }
+            set
+            {
+                if (!value.Contains("@"))
+                {
+                    Console.WriteLine("The enter valid e mail address");
+                }
+                else
+                {
+                    emailAddress = value;
+                }
+            }
+        }
+        public DateTime LastSeen
+        {
+            set
+            {
+                lastSeen = value;
+            }
+        }
+    }
+
+    class TrafficLight
+    {
+        private string Color;
+        private void ChangeColor(string color)
+        {
+
+        }
+        public string GetColor()
+        {
+            return Color;
+        }
+    }
+
+    enum TurnDirection
+    {
+        None = 0,
+        Left,
+        Right
+    }
+
+    class Car
+    {
+        private double Fuel;
+
+        private int Mileage;
+
+        private string color;
+
+        private TurnDirection turn;
+
+        public Car()
+        {
+            Fuel = 50;
+            Mileage = 0;
+            color = "White";
+        }
+
+        private void Move()
+        {
+            // Move a kilometer
+            Mileage++;
+            Fuel -= 0.5;
+        }
+
+        private void Turn(TurnDirection direction)
+        {
+            turn = direction;
+        }
+
+        public void FillTheCar()
+        {
+            Fuel = 50;
+        }
+
+        public string GetColor()
+        {
+            return color;
+        }
+
+        public void ChangeColor(string newColor)
+        {
+            if (color != newColor)
+                color = newColor;
+        }
+
+        public bool IsTurningLeft()
+        {
+            return turn == TurnDirection.Left;
+        }
+
+        public bool IsTurningRight()
+        {
+            return turn == TurnDirection.Right;
+        }
     }
     static Department GetCurrentDepartment()
     {
@@ -1173,30 +1314,6 @@ class MainClass
         public void Perimiter()
         {
 
-        }
-    }
-    class Car
-    {
-        public double Fuel;
-
-        public int Mileage;
-
-        public Car()
-        {
-            Fuel = 50;
-            Mileage = 0;
-        }
-
-        public void Move()
-        {
-            // Move a kilometer
-            Mileage++;
-            Fuel -= 0.5;
-        }
-
-        public void FillTheCar()
-        {
-            Fuel = 50;
         }
     }
     class Bus
