@@ -1076,11 +1076,178 @@ class MainClass
 
         object obj = 200;
         object newobj = obj;
-*/
+
         Animal animal = new Animal { type = "dog", name = "Volt", age = "4" };
+
+        Data data = new Data { Name = "Record", Lenght = 10, Version = 1, Array = new int[] {15,20 } };
+        Obj obj = new Obj { Name = "Table", IsAlive = false, Weight = 15 };
+
+        var dataCopy = data;
+        var objCopy = obj;
+
+
+        data.Name = "Value";
+        data.Version = 2;
+        data.Array[0] = 0;
+
+        obj.Name = "Cat";
+        obj.IsAlive = true;
+        obj.Weight = 3;
+
+        objCopy = new Obj { Name =objCopy.Name, IsAlive = obj.IsAlive, Weight = obj.Weight };
+
+        obj.Name = "Table";
+        obj.IsAlive = false;
+        obj.Weight = 15;
+*/
+
+        var department = GetCurrentDepartment();
 
         Console.ReadKey();
     }
+    static Department GetCurrentDepartment()
+    {
+
+        Department department = new Department();
+
+        string message = department?.Company?.Name == "Bank" && department?.City?.Name == "Peter" ? "The bank has branch at Peter" : "No branch found at that city";
+        /*
+            if (department?.Company?.Type == "Банк" && department?.City?.Name == "Санкт-Петербург")
+            {
+	            Console.WriteLine("У банка {0} есть отделение в Санкт-Петербурге", department?.Company?.Name ?? "Неизвестная компания");
+            }
+        */          
+
+        return department;
+        // logic
+    }
+
+    class Triangle
+    {
+        public int sideA;
+
+        public int sideB;
+
+        public int sideC;
+
+
+        public void Square()
+        {
+            // Move a kilometer
+        }
+
+        public void Perimiter()
+        {
+
+        }
+    }
+    class Circle
+    {
+        public double radius;
+
+        public double? lenght;
+
+        public Circle()
+        {
+            radius = 0;
+            lenght = 0;
+        }
+        public void Square()
+        {
+            // Move a kilometer
+        }
+
+        public void Perimiter()
+        {
+
+        }
+    }
+    class Square
+    {
+        public int sideA;
+
+        public void Square1()
+        {
+            // Move a kilometer
+        }
+        public void Perimiter()
+        {
+
+        }
+    }
+    class Car
+    {
+        public double Fuel;
+
+        public int Mileage;
+
+        public Car()
+        {
+            Fuel = 50;
+            Mileage = 0;
+        }
+
+        public void Move()
+        {
+            // Move a kilometer
+            Mileage++;
+            Fuel -= 0.5;
+        }
+
+        public void FillTheCar()
+        {
+            Fuel = 50;
+        }
+    }
+    class Bus
+    {
+        public int? Load;
+
+        public void PrintStatus()
+        {
+            if (Load.HasValue && Load > 0)
+            {
+                Console.WriteLine("В авбтобусе {0} пассажиров", Load.Value);
+            }
+            else
+            {
+                Console.WriteLine("Автобус пуст!");
+            }
+        }
+    }
+    class Company
+    {
+        public string Type;
+        public string Name;
+    }
+    class Department
+    {
+        public Company Company;
+        public City City;
+    }
+    class City
+    {
+        public string Name;
+    }
+
+
+
+    struct Data
+    {
+        public string Name;
+        public int Lenght;
+        public int Version;
+        public int[] Array;
+    }
+    class Obj
+    {
+        public string Name;
+        public bool IsAlive;
+        public int Weight;
+    }
+
+
+
     class Rectabgle
     {
         public int a;
@@ -1192,7 +1359,7 @@ class MainClass
         }
     }
     */
-    static void BigDataOperation(in int[] arr, ref int data)
+        static void BigDataOperation(in int[] arr, ref int data)
     {
         data = 4;
         arr[0] = 4;
