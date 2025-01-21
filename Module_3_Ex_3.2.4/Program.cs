@@ -2,10 +2,19 @@
 using System.Data;
 using System.Drawing;
 using System.Numerics;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+
+static class StringExtension
+{
+    public static char GetLastChar(this string source)
+    {
+        return source[source.Length - 1];
+    }
+}
 
 class MainClass
 {
@@ -1102,7 +1111,7 @@ class MainClass
         obj.Weight = 15;
 
         var department = GetCurrentDepartment();
-*/
+
         User user = new User();
 
         // private Setter
@@ -1110,8 +1119,778 @@ class MainClass
 
         // Getter
         Console.WriteLine(user.Age);
+
+        Car car = new HybridCar();
+        car.Move();
+
+        SmartHelper helper = new SmartHelper("Олег");
+        helper.Greetings("Грег");
+
+        //BaseClass baseClass = new BaseClass();
+        //BaseClass baseClass1 = new DerivedClass();
+        //baseClass.Display();  //Задание 7.2.3
+        //baseClass1.Display(); //Задание 7.2.3
+        //DerivedClass obj = new DerivedClass();
+        DerivedClass obj = new DerivedClass();
+        obj.Display();
+
+        A a = new A();
+        B b = new B();
+        C c = new C();
+
+        a.Display();    // метод класса A
+        b.Display();    // метод класса B
+        ((A)b).Display();   // метод класса B
+
+        c.Display();    // метод класса C
+        ((A)c).Display();   // метод класса B
+        ((B)c).Display();	// метод класса B
+
+        var array = new Book[]
+        {
+            new Book
+            {
+              Name = "Мастер и Маргарита",
+              Author = "М.А. Булгаков"
+            },
+            new Book
+            {
+              Name = "Отцы и дети",
+              Author = "И.С. Тургенев"
+            },
+        };
+
+        BookCollection collection = new BookCollection(array);
+
+        Book book = collection[1];
+        
+        //Counter counter = new Counter();
+        Counter.IncreasingCouter++;
+        Console.WriteLine(Counter.IncreasingCouter);
+        */
+        Order<int> order1 = new Order<int>();
+        Order<string> order2 = new Order<string>();
+        order1.Number = 1234;
+        order2.Number = "NN-1234";
+
+        Generic<object, int, string> generic = new Generic<object, int, string>();
+
         Console.ReadKey();
     }
+    //Задание 7.6.6
+    class Record<T1, T2>
+    {
+        public T1 Id;
+        public T2 Value;
+        public DateTime Date;
+    }
+    class Obj2
+    {
+        public void Display<T>(T param)
+        {
+            Console.WriteLine(param.ToString());
+        }
+    }
+    class Program
+    {
+        public static void Swap<T>(ref T x, ref T y)
+        {
+            T t = x;
+            x = y; 
+            y = t;
+        }
+    }
+
+    //Задание 7.6.2
+    abstract class Car<TEngine> where TEngine: Engine
+    {
+        public TEngine Engine = default(TEngine);
+        public abstract void ChangePart<TPart>(TPart newPart) where TPart : CarPart;
+
+    }
+    class ElectricEngine: Engine
+    {
+
+    }
+    class GasEngine: Engine
+    {
+
+    }
+    class Battery: CarPart
+    {
+
+    }
+    class Differential: CarPart
+    {
+
+    }
+    class Wheel: CarPart
+    {
+
+    }
+    abstract class Engine
+    {
+
+    }
+    abstract class CarPart
+    {
+
+    }
+    class ElectricCar: Car<ElectricEngine>
+    {
+        public override void ChangePart<TPart>(TPart newPart)
+        {
+            
+        }
+    }
+    class GasCar: Car<GasEngine>
+    {
+        public override void ChangePart<TPart>(TPart newPart)
+        {
+
+        }
+    }
+    class Generic<T1, T2,T3>
+    {
+        public T1 Field;
+        public T2 Property { get; set; }
+        public void Mehtod (T3 param)
+        {
+
+        }
+    }
+
+    class Generic<T>
+    {
+        public T Field;
+        public void Method(T param)
+        {
+
+        }
+    }
+    class Order<T>
+    {
+        public T Number;
+        public string Description;
+
+    }
+    //Задание 7.5.13
+    class Helper
+    {
+
+        public static void Swap(ref int num1, ref int num2)
+        {
+            int tempNum;
+            tempNum = num1;
+            num1 = num2;
+            num2 = num1;
+        }
+    }
+
+
+
+
+    class ObjWthStatic
+    {
+        private string name;
+        private string Description;
+        public static int MaxValue = 200;
+    }
+    class Counter
+    {
+        private static int increasingCouter;
+        public static int IncreasingCouter
+        {
+            get 
+            { 
+                return increasingCouter; 
+            }
+            set
+            {
+                if (value > increasingCouter)
+                { 
+                    increasingCouter= value;
+                }
+            }
+        }
+    }
+    abstract class Transport
+    {
+        public abstract void Move();
+    }
+
+    class Boat : Transport
+    {
+        public override void Move()
+        {
+            // ...
+        }
+    }
+
+    class Car : Transport
+    {
+        public double Fuel;
+
+        public int Mileage;
+
+        public Car()
+        {
+            Fuel = 50;
+            Mileage = 0;
+        }
+        public override void Move()
+        {
+            Mileage++;
+            Fuel -= 0.5;
+        }
+
+        public void FillTheCar()
+        {
+            Fuel = 50;
+        }
+    }
+    class HybridCar : Car
+    {
+        public FuelType FuelType;
+
+        public void ChangeFuelType(FuelType type)
+        {
+            FuelType = type;
+        }
+    }
+
+
+    abstract class ComputerPart
+    {
+        public string Name;
+
+        public ComputerPart(string name)
+        {
+            Name = name;
+        }
+
+        public abstract void Work();
+    }
+    class Processor: ComputerPart
+    {
+        public Processor(string name): base (name)
+        {
+
+        }
+        public override void Work()
+        {
+
+        }
+    }
+    class MotherBoard: ComputerPart
+    {
+        public MotherBoard(string name) : base(name)
+        {
+
+        }
+        public override void Work()
+        {
+
+        }
+
+    }
+    class GraphicCard: ComputerPart
+    {
+        public GraphicCard(string name) : base(name)
+        {
+
+        }
+        public override void Work()
+        {
+
+        }
+
+    }
+    abstract class FourLeggedAnimal
+    {
+        public abstract string Name
+        {
+            get;
+            set;
+        }
+    }
+
+    class Dog : FourLeggedAnimal
+    {
+        private string name;
+        public override string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+    }
+
+    class Cat : FourLeggedAnimal
+    {
+        public override string Name
+        {
+            get;
+            set;
+        }
+    }
+    abstract class Person
+    {
+        public string Name;
+
+        public Person(string name)
+        {
+            Name = name;
+        }
+
+        public void DisplayName()
+        {
+            Console.WriteLine(Name);
+        }
+    }
+
+    class Employee : Person
+    {
+        // Булевый флаг, сообщающий, находится ли сотрудник на смене
+        public bool IsOnShift;
+
+        public Employee(string name, bool isOnShift) : base(name)
+        {
+            IsOnShift = isOnShift;
+        }
+    }
+
+    class Guest : Person
+    {
+        // Дата и время прибытия гостя
+        public DateTime ArrivalDate;
+
+        public Guest(string name, DateTime arrivalDate) : base(name)
+        {
+            ArrivalDate = arrivalDate;
+        }
+    }
+
+
+
+    //Задание 7.2.14
+    class IndexingClass
+    {
+        private int[] array;
+
+        public IndexingClass(int[] array)
+        {
+            this.array = array;
+        }
+
+        public int this[int index]
+        {
+            get
+            {
+                return array[index];
+            }
+            set
+            {
+                array[index] = value;
+            }
+        }
+    }
+
+    // Класс для объекта “Книга”
+    class Book
+    {
+        public string Name;
+        public string Author;
+    }
+
+    // Класс для объекта “Коллекция книг”
+    class BookCollection
+    {
+        // Закрытое поле, хранящее книги в виде массива
+        private Book[] collection;
+
+        // Конструктор с добавлением массива книг
+        public BookCollection(Book[] collection)
+        {
+            this.collection = collection;
+        }
+
+        // Индексатор по массиву
+        public Book this[int index]
+        {
+            get
+            {
+                // Проверяем, чтобы индекс был в диапазоне для массива
+                if (index >= 0 && index < collection.Length)
+                {
+                    return collection[index];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+            private set
+            {
+                // Проверяем, чтобы индекс был в диапазоне для массива
+                if (index >= 0 && index < collection.Length)
+                {
+                    collection[index] = value;
+                }
+            }
+        }
+    }
+    //Задание 7.2.12
+    class Obj
+    {
+        public int Value;
+
+        public static Obj operator +(Obj a, Obj b)
+        {
+            return new Obj
+            {
+                Value = a.Value + b.Value
+            };
+        }
+        public static Obj operator -(Obj a, Obj b)
+        {
+            return new Obj
+            {
+                Value = a.Value - b.Value
+            };
+        }
+    }
+
+
+    class A
+    {
+        public virtual void Display()
+        {
+            Console.WriteLine("A");
+        }
+    }
+    class B : A
+    {
+        public new void Display() { Console.WriteLine("B"); }   
+    }
+    class C : A
+    {
+        public override void Display() { Console.WriteLine("C"); }
+    }
+    class D : B    
+    {
+        public new void Display()
+        {
+            Console.WriteLine("D");
+        }
+    }
+    class E : C 
+    {
+        public new void Display()
+        {
+            Console.WriteLine("E");
+        }
+    }
+
+
+
+
+    /*
+    class A
+    {
+        public virtual void Display()
+        {
+            Console.WriteLine("Method called by class A");
+        }
+    }
+    class B : A
+    {
+        public override void Display()
+        {
+            Console.WriteLine("Method called by class B");
+        }
+    }
+    class C : B
+    {
+        public new void Display()
+        {
+            Console.WriteLine("Method called by class C");
+        }
+    }
+    */
+    /*
+    //Задание 7.2.4
+    class BaseClass
+    {
+        public virtual int Counter
+        {
+            get;
+            set;
+        }
+    }
+
+    class DerivedClass : BaseClass
+    {
+        public override int Counter
+        {
+            get
+            {
+                return Counter;
+            }
+            set
+            {
+                if (value >= 0) 
+                {
+                    Counter = value;
+                }
+            }
+        }
+    }
+    */
+    class Citizen
+    {
+        public virtual double Age
+        {
+            get;
+            set;
+        }
+
+        public void SayYourAge()
+        {
+            Console.WriteLine("Мне {0} лет", Age);
+        }
+    }
+
+    class CivilServant : Citizen
+    {
+        private double age;
+        public override double Age
+        {
+            get
+            {
+                return age;
+            }
+            set
+            {
+                if (value < 18)
+                {
+                    Console.WriteLine("Для работы госслужащим гражданин должен быть не младше 18 лет");
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+        }
+    }
+
+    class President : CivilServant
+    {
+        private double age;
+        public override double Age
+        {
+            get
+            {
+                return age;
+            }
+            set
+            {
+                if (value < 35)
+                {
+                    Console.WriteLine("Для работы президентом гражданин должен быть не младше 35 лет");
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+        }
+    }
+
+    
+    //Задание 7.2.3
+    class BaseClass
+    {
+        public virtual void Display()
+        {
+            Console.WriteLine("Method of class BaseClass");
+        }
+    }
+    class DerivedClass: BaseClass
+    {
+        public override void Display()
+        {
+            base.Display();
+            Console.WriteLine("Method of DerivedClass");
+        }
+    }
+
+    class Creature { }
+
+    class Animal : Creature { }
+
+    class Human : Creature { }
+
+    class HomoSapiens : Human { }
+    /*
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            HomoSapiens hs = new HomoSapiens();
+            Human human = hs;
+            Creature creature = (Creature)human;
+            Creature secondCreature = new Animal();
+        }
+    }
+    
+    //Задание 7.1.10
+    class BaseClass
+    {
+        protected string Name;
+
+        public BaseClass(string name)
+        {
+            Name = name;
+        }
+    }
+    class DerivedClass : BaseClass
+    {
+        public string Description;
+
+        public int Counter;
+
+        DerivedClass(string name,string description): base(name)
+        {
+            Description = description;
+        }
+        public DerivedClass(string name, string description, int counter) : this(name, description)
+        {
+            Counter = counter;
+        }
+    }
+
+    
+    class BaseClass
+    {
+        public string Name;
+        protected string Description;
+        private int value;
+
+        public BaseClass(int value)
+        {
+            this.value = value;
+        }
+    }
+
+    class InheritedClass : BaseClass
+    {
+        private int newValue;
+
+        public InheritedClass(int newValue) : base(100)
+        {
+            this.newValue = newValue;
+        }
+    }
+    */
+    //Задание 7.1.6
+    class Obj1
+    {
+        private string name;
+        private string owner;
+        private int length;
+        private int count;
+
+        public Obj1(string name, string ownerName, int objLength, int count)
+        {
+            this.name = name;
+            owner = ownerName;
+            length = objLength;
+            this .count = count;
+        }
+    }
+    //Задание 7.1.7
+    class SmartHelper
+    {
+        private string name;
+
+        public SmartHelper(string name)
+        {
+            this.name = name;
+        }
+        public void Greetings(string name)
+        {
+            Console.WriteLine("Привет, {0}, я интеллектуальный помощник {1}", name, this.name);
+        }
+    }
+    /*
+    class Employee
+    {
+        public string Name;
+        public int Age;
+        public int Salary;
+    }
+    class ProjectManager: Employee
+    {
+        public string ProjectName;
+    }
+    */
+    class Food
+    {
+
+    }
+    class Fruit : Food
+    {
+
+    }
+    class Vegetable: Food
+    {
+
+    }
+    class Apple: Fruit
+    {
+
+    }
+    class Banana: Fruit
+    {
+
+    }
+    class Pear: Fruit
+    {
+
+    }
+    class Potato: Vegetable
+    {
+
+    }
+    class Carrot: Vegetable
+    {
+
+    }
+    /*
+    class Developer: Employee
+    {
+        private string ProgrammingLanguage;
+    }
+    
+    class BaseClass
+    {
+        public string Name;
+        protected string Description;
+        private int value;
+    }
+
+    class InheritedClass : BaseClass
+    {
+
+    }
+    */
     class User
     {
         private int age;
@@ -1190,62 +1969,68 @@ class MainClass
         Left,
         Right
     }
-
+/*
     class Car
     {
-        private double Fuel;
+        public double Fuel;
 
-        private int Mileage;
-
-        private string color;
-
-        private TurnDirection turn;
+        public int Mileage;
 
         public Car()
         {
             Fuel = 50;
             Mileage = 0;
-            color = "White";
         }
 
-        private void Move()
+        public virtual void Move()
         {
             // Move a kilometer
             Mileage++;
             Fuel -= 0.5;
         }
 
-        private void Turn(TurnDirection direction)
-        {
-            turn = direction;
-        }
-
         public void FillTheCar()
         {
             Fuel = 50;
         }
+    }
+*/
+    enum FuelType
+    {
+        Gas = 0,
+        Electricity
+    }
+/*
+    class HybridCar : Car
+    {
+        public FuelType FuelType;
+        private double Gas {  get; set; }
+        private double Electricity {  get; set; }
 
-        public string GetColor()
+
+
+        public override void Move()
         {
-            return color;
+            base.Move();
+            Console.WriteLine("Вызван метод Move класса HybridCar");
+
+            switch (FuelType)
+            {
+                case FuelType.Gas:
+                    Gas -= 0.5;
+                    break;
+                case FuelType.Electricity:
+                    Electricity -= 0.5;
+                    break;
+            }
         }
 
-        public void ChangeColor(string newColor)
+        public void ChangeFuelType(FuelType type)
         {
-            if (color != newColor)
-                color = newColor;
-        }
-
-        public bool IsTurningLeft()
-        {
-            return turn == TurnDirection.Left;
-        }
-
-        public bool IsTurningRight()
-        {
-            return turn == TurnDirection.Right;
+            FuelType = type;
         }
     }
+*/
     static Department GetCurrentDepartment()
     {
 
@@ -1356,13 +2141,14 @@ class MainClass
         public int Version;
         public int[] Array;
     }
+    /*
     class Obj
     {
         public string Name;
         public bool IsAlive;
         public int Weight;
     }
-
+    */
 
 
     class Rectabgle
@@ -1389,6 +2175,7 @@ class MainClass
         public int Square() { return a * b; }
 
     }
+    /*
     struct Animal
     {
         public string type;
@@ -1400,6 +2187,7 @@ class MainClass
             Console.WriteLine("It is {0} with nick name {1}, he is {2}", type, name, age);
         }
     }
+    */
     class Pen
     {
         public string color;
